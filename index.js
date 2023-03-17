@@ -42,10 +42,11 @@ function run() {
             // console.log(result)
             res.send(result);
         });
-        app.put("/alldata/edit/:id", async (req, res) => {
+        app.put("/post/:id", async (req, res) => {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) }
-            const posts = req.body;
+            const posts = req.body
+
             const option = { upsert: true };
             const updatedUser = {
                 $set: {
@@ -62,6 +63,7 @@ function run() {
                 updatedUser,
                 option
             );
+            console.log(result)
             res.send(result);
         });
     }
